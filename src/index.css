@@ -1,0 +1,517 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Bharat Terroir Premium Design System */
+    --background: 40 18% 97%; /* #faf9f8 */
+    --foreground: 180 4% 10%; /* #1a1c1c */
+
+    /* The Layering Principle */
+    --surface: 40 18% 97%; /* #faf9f8 */
+    --surface-low: 30 14% 95%; /* #f4f3f2 */
+    --surface-container: 30 5% 93%; /* #eeeeed */
+    --surface-high: 30 4% 91%; /* #e9e8e7 */
+    --surface-highest: 30 3% 89%; /* #e3e2e1 */
+    --surface-lowest: 0 0% 100%; /* #ffffff */
+
+    --card: 0 0% 100%;
+    --card-foreground: 180 4% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 180 4% 10%;
+
+    /* Primary: The Harvest Green */
+    --primary: 123 51% 25%; /* #206223 */
+    --primary-foreground: 0 0% 100%;
+    --primary-container: 120 36% 35%; /* #3a7b3a */
+    --primary-fixed: 114 74% 80%; /* #acf4a4 */
+    --primary-glow: 120 36% 45%;
+
+    /* Secondary: The Ochre Earth */
+    --secondary: 31 47% 33%; /* #7d562d */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-container: 29 100% 80%; /* #ffca98 */
+
+    /* Muted: Soft variants for ghost borders */
+    --muted: 104 11% 76%; /* #bfcaba -> outline-variant at 15% opacity typically */
+    --muted-foreground: 105 9% 26%; /* #40493d */
+
+    /* Tertiary / Accent: Warm Gold */
+    --accent: 41 100% 23%; /* #734e00 */
+    --accent-foreground: 0 0% 100%;
+    --tertiary-container: 41 100% 29%; /* #926500 */
+
+    /* Destructive */
+    --destructive: 356 100% 36%; /* #ba1a1a */
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders are discouraged, but for accessibility */
+    --border: 103 6% 43%; /* #707a6c */
+    --input: 103 6% 43%;
+    --ring: 123 51% 25%; 
+
+    --radius: 1rem; /* 16px */
+    
+    /* Global Elevated Shadows (No standard drop shadows) */
+    --shadow-soft: 0 4px 20px -5px hsl(123 51% 25% / 0.05); /* Tinted organic shadow */
+    --shadow-elevated: 0 10px 40px -10px hsl(123 51% 25% / 0.08); /* Ambient */
+    --shadow-glow: 0 0 40px hsl(123 51% 25% / 0.15);
+    --shadow-intense: 0 12px 48px hsl(123 51% 25% / 0.12);
+    --shadow-inner: inset 0 2px 4px hsl(123 51% 25% / 0.04);
+    
+    /* Glassmorphism gradient */
+    --gradient-primary: linear-gradient(135deg, hsl(123 51% 25% / 0.9), hsl(120 36% 35% / 0.85));
+    --gradient-weather: linear-gradient(180deg, hsl(200 65% 85%), hsl(45 90% 92%));
+    
+    --transition-smooth: all 0.4s cubic-bezier(0.2, 0, 0, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --sidebar-background: 40 18% 97%;
+    --sidebar-foreground: 180 4% 10%;
+    --sidebar-primary: 123 51% 25%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 14% 95%;
+    --sidebar-accent-foreground: 180 4% 10%;
+    --sidebar-border: 104 11% 76%;
+    --sidebar-ring: 123 51% 25%;
+  }
+
+  .dark {
+    /* Dark mode optimized for agricultural monitoring in low light */
+    --background: 140 30% 9%;
+    --foreground: 40 18% 97%;
+    
+    --surface: 140 30% 9%;
+    --surface-low: 140 25% 12%;
+    --surface-container: 140 20% 16%;
+    --surface-high: 140 20% 19%;
+    --surface-highest: 140 20% 22%;
+    --surface-lowest: 140 30% 7%;
+
+    --card: 140 20% 16%;
+    --card-foreground: 40 18% 97%;
+
+    --popover: 140 20% 16%;
+    --popover-foreground: 40 18% 97%;
+
+    --primary: 114 74% 80%; /* inverse_primary #acf4a4 */
+    --primary-foreground: 123 100% 7%; /* on_primary_container #002203 */
+    --primary-container: 123 51% 25%;
+    --primary-glow: 114 74% 70%;
+
+    --secondary: 29 100% 80%; /* #ffca98 */
+    --secondary-foreground: 29 100% 12%;
+    --secondary-container: 31 47% 33%;
+
+    --muted: 105 9% 26%;
+    --muted-foreground: 104 11% 76%;
+
+    --accent: 41 100% 84%; /* tertiary_fixed */
+    --accent-foreground: 41 100% 8%; /* on_tertiary_fixed */
+    --tertiary-container: 41 100% 23%;
+
+    --destructive: 356 100% 84%; /* #ffdad6 */
+    --destructive-foreground: 356 100% 14%; /* #93000a */
+
+    --border: 105 9% 26%; /* outline */
+    --input: 105 9% 26%;
+    --ring: 114 74% 80%;
+
+    --sidebar-background: 140 20% 16%;
+    --sidebar-foreground: 40 18% 97%;
+    --sidebar-primary: 114 74% 80%;
+    --sidebar-primary-foreground: 123 100% 7%;
+    --sidebar-accent: 140 20% 22%;
+    --sidebar-accent-foreground: 40 18% 97%;
+    --sidebar-border: 105 9% 26%;
+    --sidebar-ring: 114 74% 80%;
+  }
+
+  .dark {
+    --background: 140 35% 6%;
+    --foreground: 48 25% 95%;
+
+    --card: 140 30% 9%;
+    --card-foreground: 48 25% 95%;
+
+    --popover: 140 30% 9%;
+    --popover-foreground: 48 25% 95%;
+
+    --primary: 145 70% 48%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 145 70% 58%;
+
+    --secondary: 20 70% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 140 20% 18%;
+    --muted-foreground: 48 20% 70%;
+
+    --accent: 42 90% 55%;
+    --accent-foreground: 140 30% 12%;
+
+    --destructive: 0 65% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 140 20% 22%;
+    --input: 140 20% 20%;
+    --ring: 145 70% 48%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-harvest {
+    background: var(--gradient-harvest);
+  }
+  
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-intense {
+    box-shadow: var(--shadow-intense);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  .hover-lift {
+    @apply transition-smooth hover:-translate-y-1 hover:shadow-elevated;
+  }
+
+  .hover-glow {
+    @apply transition-smooth hover:shadow-glow;
+  }
+
+  .glass {
+    @apply bg-white/80 dark:bg-card/80 backdrop-blur-xl border border-border/50;
+  }
+}
+
+/* Leaflet Map Fixes */
+.leaflet-container {
+  z-index: 0;
+}
+
+.leaflet-container.drawing-mode {
+  cursor: crosshair !important;
+}
+
+.leaflet-container.drawing-mode * {
+  cursor: crosshair !important;
+}
+
+.leaflet-container:not(.drawing-mode) {
+  cursor: grab;
+}
+
+.leaflet-container.leaflet-touch-drag {
+  cursor: grab;
+}
+
+.leaflet-container.leaflet-touch-drag.leaflet-drag-target {
+  cursor: grabbing;
+}
+
+/* Custom Drawing Marker Animation */
+.custom-drawing-marker {
+  animation: markerPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes markerPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Drawing Mode Border Animation */
+@keyframes borderPulse {
+  0%, 100% {
+    border-color: #3b82f6;
+  }
+  50% {
+    border-color: #60a5fa;
+  }
+}
+
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-pane > svg,
+.leaflet-pane > canvas,
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.leaflet-tile-pane {
+  z-index: 200;
+}
+
+.leaflet-overlay-pane {
+  z-index: 400;
+}
+
+.leaflet-shadow-pane {
+  z-index: 500;
+}
+
+.leaflet-marker-pane {
+  z-index: 600;
+}
+
+.leaflet-tooltip-pane {
+  z-index: 650;
+}
+
+.leaflet-popup-pane {
+  z-index: 700;
+}
+
+.leaflet-control {
+  z-index: 800;
+}
+
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 1000;
+}
+
+/* Custom Markdown Styling for AI Chatbot */
+.chatbot-markdown {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.chatbot-markdown h1,
+.chatbot-markdown h2,
+.chatbot-markdown h3,
+.chatbot-markdown h4 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.chatbot-markdown h1 {
+  font-size: 1.25rem;
+  border-bottom: 2px solid hsl(var(--border));
+  padding-bottom: 0.25rem;
+}
+
+.chatbot-markdown h2 {
+  font-size: 1.125rem;
+}
+
+.chatbot-markdown h3 {
+  font-size: 1rem;
+}
+
+.chatbot-markdown p {
+  margin: 0.5rem 0;
+}
+
+.chatbot-markdown strong {
+  font-weight: 600;
+  color: hsl(var(--primary));
+}
+
+.chatbot-markdown em {
+  font-style: italic;
+}
+
+.chatbot-markdown ul,
+.chatbot-markdown ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.chatbot-markdown ul {
+  list-style-type: disc;
+}
+
+.chatbot-markdown ol {
+  list-style-type: decimal;
+}
+
+.chatbot-markdown li {
+  margin: 0.25rem 0;
+}
+
+.chatbot-markdown li > ul,
+.chatbot-markdown li > ol {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.chatbot-markdown code {
+  background-color: hsl(var(--muted));
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.875em;
+  color: hsl(var(--foreground));
+}
+
+.chatbot-markdown pre {
+  background-color: hsl(var(--muted));
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}
+
+.chatbot-markdown pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  display: block;
+}
+
+.chatbot-markdown blockquote {
+  border-left: 4px solid hsl(var(--primary));
+  padding-left: 1rem;
+  margin: 0.75rem 0;
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+}
+
+.chatbot-markdown a {
+  color: hsl(var(--primary));
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.chatbot-markdown a:hover {
+  text-decoration: underline;
+}
+
+.chatbot-markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75rem 0;
+  font-size: 0.875rem;
+}
+
+.chatbot-markdown th,
+.chatbot-markdown td {
+  border: 1px solid hsl(var(--border));
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.chatbot-markdown th {
+  background-color: hsl(var(--muted));
+  font-weight: 600;
+}
+
+.chatbot-markdown tr:hover {
+  background-color: hsl(var(--muted) / 0.5);
+}
+
+.chatbot-markdown hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border));
+  margin: 1rem 0;
+}
+
+.chatbot-markdown img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+/* Dark mode specific styles */
+.dark .chatbot-markdown code {
+  background-color: hsl(var(--muted) / 0.5);
+}
+
+.dark .chatbot-markdown pre {
+  background-color: hsl(var(--muted) / 0.5);
+}
+
+.dark .chatbot-markdown th {
+  background-color: hsl(var(--muted) / 0.7);
+}
+
+.dark .chatbot-markdown tr:hover {
+  background-color: hsl(var(--muted) / 0.3);
+}

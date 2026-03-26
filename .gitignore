@@ -1,0 +1,77 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+check*.*
+node_modules
+dist
+dist-ssr
+*.local
+ondc-nodejs-bundle
+ARTICLE_PUBLISHING_GUIDE.md
+AWS_BUILDER_CENTER_ARTICLE.md
+# AWS
+.aws/
+*.zip
+*_accessKeys.csv
+.env
+server/.env
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+.vercel
+
+# SECURITY: Exclude entire AgriSenseFlow directory (contains sensitive data)
+AgriSenseFlow/
+
+# SECURITY: Exclude scripts and files with potential secrets
+*.ps1
+setup-aws-cli.ps1
+update-lambda-sagemaker.ps1
+deploy-*.ps1
+
+# SECURITY: Exclude test/seed scripts with credentials
+test.py
+test-seed.py
+test-seed-v2.py
+seed.py
+s.py
+redis_dump*.json
+
+# SECURITY: Exclude temporary environment files
+server/temp-env-vars.json
+temp-env-vars.json
+
+# SECURITY: Exclude documentation with exposed secrets
+SECURITY_CLEANUP.md
+SECURITY_AUDIT_COMPLETE.md
+SECURITY_FINAL_REPORT.md
+
+# SECURITY: Exclude CSV files (may contain credentials)
+*.csv
+*_accessKeys.csv
+
+# SECURITY: Exclude credentials backup file
+CREDENTIALS_BACKUP.env
+
+# SECURITY: Exclude zip archives
+*.zip
+
+# Docs: ignore all Markdown except README.md
+*.md
+!README.md
+
+.kiro/*
