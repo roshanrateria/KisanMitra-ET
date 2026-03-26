@@ -30,7 +30,7 @@ India loses **21 million tonnes of wheat annually** to crop disease. 86% of Indi
 
 KisanMitra is an agricultural AI agent platform that:
 - Detects crop disease from a photo using a custom YOLOv8 model on SageMaker
-- Autonomously generates organic treatment plans and places orders via ONDC
+- Autonomously generates organic treatment plans and surfaces one-click ONDC orders for farmer approval
 - Negotiates harvest sale prices with buyers — with a hard price floor the agent can never cross
 - Advises on farming tasks using live weather, 5-day forecast, and soil data
 - Works in 10+ Indian languages via voice, including offline-degraded modes
@@ -71,7 +71,7 @@ KisanMitra is an agricultural AI agent platform that:
         ↓
 ⑤ ONDC Beckn search → supplier catalog (live Mock Playground on Elastic Beanstalk → real ONDC staging gateway)
         ↓
-⑥ ONDC Select → Confirm → DynamoDB ledger entry
+⑥ Farmer reviews matched suppliers + prices → one-click confirm → ONDC Select → Confirm → DynamoDB ledger entry
         ↓
 [Farmer receives order confirmation + treatment plan]
 ```
@@ -441,16 +441,16 @@ Every claim below is sourced from peer-reviewed research or official government 
 | Metric | Before KisanMitra | After KisanMitra | Delta |
 |---|---|---|---|
 | Disease identification time | 3–7 days (visit agricultural office, wait for expert) ¹ | < 2 seconds (SageMaker YOLOv8 inference) | **99.9% faster** |
-| Disease-to-treatment-order time | 3–7 days ¹ | < 60 seconds (full 6-step agent workflow) | **99.9% reduction** |
-| Farmer negotiation outcome | ₹2,400/quintal (middleman's opening offer) | ₹2,650/quintal (agent-negotiated, 2 rounds) | **+₹250/quintal (+10.4%)** |
-| Extra income per 100 quintals | — | ₹25,000 per harvest | **Directly measurable** |
-| Wheat crop loss addressable | 21–24M tonnes/year (Savary et al., 2019 × USDA FAS 2024) | Early detection + treatment order in < 60s | **Addressable at scale** |
+| Disease-to-treatment time | 3–7 days ¹ | < 60 seconds to treatment plan + one-click ONDC order | **99.9% reduction** |
+| Farmer negotiation outcome | ₹1,850/quintal (buyer's opening offer) | ₹2,015/quintal (agent-negotiated, 2 rounds) | **+₹165/quintal (+8.9%)** |
+| Extra income per 100 quintals | — | ₹16,500 per harvest | **Directly measurable** |
+| Wheat crop loss addressable | 21–24M tonnes/year (Savary et al., 2019 × USDA FAS 2024) | Early detection + treatment plan in < 60s | **Addressable at scale** |
 | Farmers receiving expert advice | 6% (ICRISAT) | Any farmer with a smartphone | **16× accessibility** |
 | Languages supported | 1 (English advisory content) | 10+ Indian languages via Bhashini voice | **10× accessibility** |
 | Cost per farmer per month | — | ~₹0.80 (< $0.01 AWS serverless cost) | **Near-zero marginal cost** |
 
 > ¹ *3–7 day baseline: ICRISAT extension worker ratio of 1:1,162 farmers means average wait for expert advice is 3–7 working days ([oar.icrisat.org](https://oar.icrisat.org/11401/1/Agriculture-Extension-System-in-India-A-Meta-analysis.pdf)).*
-> Negotiation numbers from live demo: ₹2,400 opening offer → ₹2,650 final price in 2 agent rounds (+₹25,000 per 100 quintals).
+> Negotiation numbers from live demo: ₹1,850 opening offer → ₹2,015 final price in 2 agent rounds (+₹16,500 per 100 quintals).
 
 ### Projected Scale
 
@@ -475,7 +475,8 @@ Serverless architecture means cost scales sub-linearly with users. At 2M farmers
 ### Remediation Agent
 - Gemini 2.5 Flash Lite generates structured treatment plan (severity, urgency, organic treatments, dosages, ONDC search queries)
 - **Multimodal vision input** — the actual diseased crop image is sent alongside detection metadata to Gemini for precise, image-grounded treatment recommendations
-- ONDC AGR10 search → select → confirm order lifecycle
+- ONDC AGR10 supplier search — matched products displayed with price, stock, and delivery estimate
+- **One-click order** — farmer reviews matched suppliers and confirms with a single tap; no amount is debited without explicit consent
 - Chain-of-thought activity log streamed to UI
 - Dual-layer guardrails (client pre-flight + server enforcement)
 - Critical severity escalation with KVK helpline
