@@ -16,7 +16,7 @@
 [![Auth0](https://img.shields.io/badge/Auth0-Native_Flow-EB5424?style=flat-square&logo=auth0)](https://auth0.com/)
 [![AWS](https://img.shields.io/badge/AWS-Lambda_+_SageMaker-FF9900?style=flat-square&logo=amazonaws)](https://aws.amazon.com/)
 
-### 📺 [Watch Demo Video](https://youtu.be/HR8cliiZybg)
+### 📺 [Watch Demo Video](https://youtu.be/_eroyEcdbu4)
 
 [![Download APK](https://img.shields.io/badge/Download-Android_APK-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/roshanrateria/KisanMitra-ET/releases/latest/download/app-debug.apk)
 
@@ -715,6 +715,7 @@ APK: `android/app/build/outputs/apk/debug/app-debug.apk`
 
 *Autonomy · Compliance · Auditability · Real Commerce*
 
-### 📺 [Watch Demo Video](https://youtu.be/HR8cliiZybg)
+### 📺 [Watch Demo Video](https://youtu.be/_eroyEcdbu4)
 
 </div>
+
